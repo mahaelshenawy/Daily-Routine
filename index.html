@@ -16,6 +16,8 @@
             </div>
             <nav class="nav">
                 <button class="nav-btn active" data-section="learning">Learning</button>
+                <button class="nav-btn" data-section="levelup">Level Up</button>
+                <button class="nav-btn" data-section="commuting">Commuting</button>
                 <button class="nav-btn" data-section="activities">Activities</button>
             </nav>
         </div>
@@ -591,6 +593,509 @@
                             <button class="check-btn" onclick="checkDescription()">Submit & Get Feedback</button>
                             <div class="feedback" id="feedback-6"></div>
                         </div>
+                    </div>
+
+                    <!-- Activity 7: Commuting - Complete the Route -->
+                    <div class="activity-card">
+                        <h3>Activity 7: Complete the Commuting Sentences</h3>
+                        <div class="activity-content">
+                            <p><strong>Word Bank:</strong> long, five minutes, far from, close to, short, away, one hour</p>
+                            <div class="fill-blanks">
+                                <div class="question">
+                                    <p>1. Jeff has a <input type="text" class="blank commute-blank" data-answer="short" placeholder="___"> commute.</p>
+                                </div>
+                                <div class="question">
+                                    <p>2. Melanie has a <input type="text" class="blank commute-blank" data-answer="long" placeholder="___"> commute.</p>
+                                </div>
+                                <div class="question">
+                                    <p>3. Melanie lives <input type="text" class="blank commute-blank" data-answer="far from" placeholder="___"> work.</p>
+                                </div>
+                                <div class="question">
+                                    <p>4. Jeff lives <input type="text" class="blank commute-blank" data-answer="close to" placeholder="___"> work.</p>
+                                </div>
+                                <div class="question">
+                                    <p>5. It takes Melanie <input type="text" class="blank commute-blank" data-answer="one hour" placeholder="___"> to get to work.</p>
+                                </div>
+                                <div class="question">
+                                    <p>6. It takes Jeff <input type="text" class="blank commute-blank" data-answer="five minutes" placeholder="___"> to get to work.</p>
+                                </div>
+                            </div>
+                            <button class="check-btn" onclick="checkCommutingBlanks()">Check Answers</button>
+                            <div class="feedback" id="feedback-7"></div>
+                        </div>
+                    </div>
+
+                    <!-- Activity 8: Commuting - Multiple Choice -->
+                    <div class="activity-card">
+                        <h3>Activity 8: Commuting Comprehension</h3>
+                        <div class="activity-content">
+                            <div class="multiple-choice">
+                                <div class="mc-question">
+                                    <p><strong>1. What does "close to" mean?</strong></p>
+                                    <label><input type="radio" name="q-c1" value="wrong1"> Very far away</label>
+                                    <label><input type="radio" name="q-c1" value="correct"> Near, short distance</label>
+                                    <label><input type="radio" name="q-c1" value="wrong2"> Exactly the same</label>
+                                </div>
+                                <div class="mc-question">
+                                    <p><strong>2. What type of commute does Jeff have?</strong></p>
+                                    <label><input type="radio" name="q-c2" value="wrong1"> Long commute</label>
+                                    <label><input type="radio" name="q-c2" value="correct"> Short commute</label>
+                                    <label><input type="radio" name="q-c2" value="wrong2"> No commute</label>
+                                </div>
+                                <div class="mc-question">
+                                    <p><strong>3. How long is Melanie's commute?</strong></p>
+                                    <label><input type="radio" name="q-c3" value="wrong1"> 5 minutes</label>
+                                    <label><input type="radio" name="q-c3" value="correct"> 1 hour</label>
+                                    <label><input type="radio" name="q-c3" value="wrong2"> 30 minutes</label>
+                                </div>
+                                <div class="mc-question">
+                                    <p><strong>4. Which phrase means "at a distance from"?</strong></p>
+                                    <label><input type="radio" name="q-c4" value="wrong1"> Close to</label>
+                                    <label><input type="radio" name="q-c4" value="correct"> Far from / Away from</label>
+                                    <label><input type="radio" name="q-c4" value="wrong2"> Next to</label>
+                                </div>
+                                <div class="mc-question">
+                                    <p><strong>5. What determines the type of commute?</strong></p>
+                                    <label><input type="radio" name="q-c5" value="wrong1"> The time of day</label>
+                                    <label><input type="radio" name="q-c5" value="correct"> Physical distance from work</label>
+                                    <label><input type="radio" name="q-c5" value="wrong2"> The type of job</label>
+                                </div>
+                            </div>
+                            <button class="check-btn" onclick="checkCommutingMultipleChoice()">Check Answers</button>
+                            <div class="feedback" id="feedback-8"></div>
+                        </div>
+                    </div>
+
+                    <!-- Activity 9: Commuting - Matching -->
+                    <div class="activity-card">
+                        <h3>Activity 9: Match Commuting Descriptions</h3>
+                        <div class="activity-content">
+                            <p>Match the person with their commuting situation:</p>
+                            <div class="matching-activity">
+                                <div class="matching-column">
+                                    <h4>People</h4>
+                                    <div class="match-items">
+                                        <div class="match-item" draggable="true" data-id="jeff-item">Jeff</div>
+                                        <div class="match-item" draggable="true" data-id="melanie-item">Melanie</div>
+                                    </div>
+                                </div>
+                                <div class="matching-column">
+                                    <h4>Descriptions</h4>
+                                    <div class="match-targets">
+                                        <div class="match-target" data-answer="jeff-item">Lives close to work, 5-minute commute</div>
+                                        <div class="match-target" data-answer="melanie-item">Lives far from work, 1-hour commute</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="check-btn" onclick="checkCommutingMatching()">Check Answers</button>
+                            <div class="feedback" id="feedback-9"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Level Up Section -->
+        <section id="levelup" class="section">
+            <div class="container">
+                <div class="learning-wrapper">
+                    <!-- Slide Carousel for Level Up -->
+                    <div class="slide-container">
+                        <div class="slides-wrapper">
+                            <!-- Level Up Slide 1: Quick Recap -->
+                            <div class="slide active">
+                                <div class="slide-content">
+                                    <h2>🚀 Quick Recap: Basic Routines</h2>
+                                    <div class="recap-grid">
+                                        <div class="recap-section">
+                                            <h3>🌅 Morning</h3>
+                                            <ul>
+                                                <li>Wake up</li>
+                                                <li>Get up</li>
+                                                <li>Have breakfast</li>
+                                            </ul>
+                                        </div>
+                                        <div class="recap-section">
+                                            <h3>☀️ Afternoon</h3>
+                                            <ul>
+                                                <li>Have lunch</li>
+                                                <li>Work / Study</li>
+                                                <li>Take a break</li>
+                                            </ul>
+                                        </div>
+                                        <div class="recap-section">
+                                            <h3>🌆 Evening</h3>
+                                            <ul>
+                                                <li>Go home</li>
+                                                <li>Cook dinner</li>
+                                                <li>Relax</li>
+                                            </ul>
+                                        </div>
+                                        <div class="recap-section">
+                                            <h3>🌙 Night</h3>
+                                            <ul>
+                                                <li>Have a shower</li>
+                                                <li>Go to bed</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <p style="text-align: center; margin-top: 20px; font-weight: 600;">Remember: Use the Present Simple for habits!</p>
+                                </div>
+                            </div>
+
+                            <!-- Level Up Slide 2: Adverbs of Frequency -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>🔄 Adverbs of Frequency: How Often?</h2>
+                                    <p style="margin-bottom: 20px;"><strong>What are they?</strong> These words tell us how often we do something. They help make your routine descriptions more precise.</p>
+                                    <div class="frequency-chart">
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Always</span>
+                                            <span class="frequency-percent">100%</span>
+                                        </div>
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Usually</span>
+                                            <span class="frequency-percent">80-90%</span>
+                                        </div>
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Often</span>
+                                            <span class="frequency-percent">60-70%</span>
+                                        </div>
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Sometimes</span>
+                                            <span class="frequency-percent">50%</span>
+                                        </div>
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Rarely</span>
+                                            <span class="frequency-percent">10-20%</span>
+                                        </div>
+                                        <div class="frequency-item">
+                                            <span class="frequency-word">Never</span>
+                                            <span class="frequency-percent">0%</span>
+                                        </div>
+                                    </div>
+                                    <p style="text-align: center; margin-top: 20px; font-style: italic;">💡 Tip: Use these to show your habits and consistency!</p>
+                                </div>
+                            </div>
+
+                            <!-- Level Up Slide 3: Word Order -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>📍 Word Order: Where Do They Go?</h2>
+                                    <div class="word-order-grid">
+                                        <div class="word-order-box">
+                                            <h3>Standard Rule</h3>
+                                            <p><strong>Subject + Adverb + Verb</strong></p>
+                                            <div class="example-box">
+                                                <p>"I <strong>always</strong> drink coffee in the morning."</p>
+                                                <p>"She <strong>never</strong> goes to bed late."</p>
+                                                <p>"They <strong>usually</strong> have lunch at 1:00."</p>
+                                            </div>
+                                        </div>
+                                        <div class="word-order-box">
+                                            <h3>The Exception</h3>
+                                            <p><strong>Verb "to be"</strong></p>
+                                            <p>The adverb goes <strong>after</strong> the verb "to be" (am, is, are).</p>
+                                            <div class="example-box">
+                                                <p>"I am <strong>always</strong> happy."</p>
+                                                <p>"He is <strong>often</strong> busy."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Level Up Slide 4: Sequencing Words -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>📍 Sequencing Words: Telling a Story</h2>
+                                    <div class="sequencing-grid">
+                                        <div class="seq-card">
+                                            <h3>First</h3>
+                                            <p>To start the sequence</p>
+                                        </div>
+                                        <div class="seq-card">
+                                            <h3>Then / Next</h3>
+                                            <p>For following actions</p>
+                                        </div>
+                                        <div class="seq-card">
+                                            <h3>After that</h3>
+                                            <p>To continue the flow</p>
+                                        </div>
+                                        <div class="seq-card">
+                                            <h3>Finally</h3>
+                                            <p>To end the sequence</p>
+                                        </div>
+                                    </div>
+                                    <div class="example-box">
+                                        <p><strong>Example Story:</strong></p>
+                                        <p>"First, I wake up at 6:30. Then, I have a quick breakfast. After that, I brush my teeth and get dressed. Finally, I leave for work at 8:00."</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Level Up Slide 5: Phrasal Verbs -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>🔗 Phrasal Verbs for Routines</h2>
+                                    <table class="vocab-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Phrasal Verb</th>
+                                                <th>Meaning</th>
+                                                <th>Example</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Wake up</strong></td>
+                                                <td>Stop sleeping</td>
+                                                <td>"I wake up at 6 AM."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Get up</strong></td>
+                                                <td>Get out of bed</td>
+                                                <td>"I get up at 6:15 AM."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tidy up</strong></td>
+                                                <td>Make a room neat</td>
+                                                <td>"I tidy up my desk."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Wash up</strong></td>
+                                                <td>Clean the dishes</td>
+                                                <td>"I wash up after dinner."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Catch up</strong></td>
+                                                <td>Talk about news</td>
+                                                <td>"We catch up at lunch."</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Level Up Slide 6: Common Mistakes -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>⚠️ Common Mistakes to Avoid</h2>
+                                    <div class="mistakes-grid">
+                                        <div class="mistake-card">
+                                            <h3>Third Person Singular</h3>
+                                            <p><span style="color: #ef4444;">❌ He wake up early.</span></p>
+                                            <p><span style="color: #10b981;">✅ He <strong>wakes</strong> up early.</span></p>
+                                        </div>
+                                        <div class="mistake-card">
+                                            <h3>Adverb Word Order</h3>
+                                            <p><span style="color: #ef4444;">❌ I have usually lunch.</span></p>
+                                            <p><span style="color: #10b981;">✅ I <strong>usually</strong> have lunch.</span></p>
+                                        </div>
+                                        <div class="mistake-card">
+                                            <h3>Prepositions</h3>
+                                            <p><span style="color: #ef4444;">❌ In the night.</span></p>
+                                            <p><span style="color: #10b981;">✅ <strong>At</strong> night.</span></p>
+                                        </div>
+                                        <div class="mistake-card">
+                                            <h3>Vocabulary Confusion</h3>
+                                            <p><strong>Wake up:</strong> Your eyes open, you stop sleeping.</p>
+                                            <p><strong>Get up:</strong> You physically leave your bed.</p>
+                                        </div>
+                                    </div>
+                                    <div class="example-box">
+                                        <p><strong>💡 Quick Tip:</strong> Always check your verb endings and prepositions when describing your daily habits!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide Navigation -->
+                        <button class="slide-btn prev" id="prevBtnLevelUp">❮</button>
+                        <button class="slide-btn next" id="nextBtnLevelUp">❯</button>
+
+                        <!-- Slide Indicators -->
+                        <div class="slide-indicators" id="indicatorsLevelUp"></div>
+                    </div>
+
+                    <!-- Slide Counter -->
+                    <div class="slide-counter">
+                        <span id="currentSlideLevelUp">1</span> / <span id="totalSlidesLevelUp">6</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commuting Section -->
+        <section id="commuting" class="section">
+            <div class="container">
+                <div class="learning-wrapper">
+                    <!-- Slide Carousel for Commuting -->
+                    <div class="slide-container">
+                        <div class="slides-wrapper">
+                            <!-- Commuting Slide 1: Introduction -->
+                            <div class="slide active">
+                                <div class="slide-content">
+                                    <h2>🚌 The Commuter's Guide</h2>
+                                    <p style="text-align: center; font-size: 16px; margin: 20px 0;">Navigating English vocabulary and grammar for the daily journey.</p>
+                                    <div class="slide-grid">
+                                        <div class="slide-card">
+                                            <div class="icon">🚗</div>
+                                            <h3>Short Commute</h3>
+                                            <p>Close to work, takes 5-15 minutes</p>
+                                        </div>
+                                        <div class="slide-card">
+                                            <div class="icon">🚆</div>
+                                            <h3>Long Commute</h3>
+                                            <p>Far from work, takes 1+ hours</p>
+                                        </div>
+                                        <div class="slide-card">
+                                            <div class="icon">🗺️</div>
+                                            <h3>Distance Matters</h3>
+                                            <p>Physical distance dictates commute type</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commuting Slide 2: Distance-Time Axis -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>📊 The Distance-Time Axis</h2>
+                                    <div class="distance-grid">
+                                        <div class="distance-box">
+                                            <h3>Short Commute</h3>
+                                            <p><strong>Close to</strong> work</p>
+                                            <p style="font-size: 18px; color: #10b981; font-weight: bold;">Takes 5 minutes</p>
+                                        </div>
+                                        <div class="distance-box">
+                                            <h3>Long Commute</h3>
+                                            <p><strong>Far from / Away from</strong> work</p>
+                                            <p style="font-size: 18px; color: #ef4444; font-weight: bold;">Takes 1 hour</p>
+                                        </div>
+                                    </div>
+                                    <div class="example-box">
+                                        <p><strong>Key Takeaway:</strong> Physical distance dictates the type of commute. Close distance = short commute. Far distance = long commute.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commuting Slide 3: Two Commuters -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>👥 Two Commuters, Two Journeys</h2>
+                                    <div class="commuters-grid">
+                                        <div class="commuter-card">
+                                            <h3>Melanie's Journey</h3>
+                                            <p><strong>From:</strong> House (far from office)</p>
+                                            <p><strong>To:</strong> The Office</p>
+                                            <p style="font-size: 18px; color: #ef4444; font-weight: bold; margin-top: 10px;">1 hour commute</p>
+                                            <p style="font-size: 14px; margin-top: 5px;">Long commute</p>
+                                        </div>
+                                        <div class="commuter-card">
+                                            <h3>Jeff's Journey</h3>
+                                            <p><strong>From:</strong> Apartment (close to office)</p>
+                                            <p><strong>To:</strong> The Office</p>
+                                            <p style="font-size: 18px; color: #10b981; font-weight: bold; margin-top: 10px;">5 minute commute</p>
+                                            <p style="font-size: 14px; margin-top: 5px;">Short commute</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commuting Slide 4: The Commuter Matrix -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>📋 The Commuter Matrix</h2>
+                                    <table class="vocab-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspect</th>
+                                                <th>Jeff</th>
+                                                <th>Melanie</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Residence</strong></td>
+                                                <td>Apartment</td>
+                                                <td>House</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Distance from Office</strong></td>
+                                                <td><span style="color: #10b981;">Close to</span></td>
+                                                <td><span style="color: #ef4444;">Far from</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Commute Time</strong></td>
+                                                <td><span style="color: #10b981;">5 minutes</span></td>
+                                                <td><span style="color: #ef4444;">1 hour</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Commute Type</strong></td>
+                                                <td><span style="color: #10b981; font-weight: bold;">Short commute</span></td>
+                                                <td><span style="color: #ef4444; font-weight: bold;">Long commute</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Commuting Slide 5: Key Vocabulary -->
+                            <div class="slide">
+                                <div class="slide-content">
+                                    <h2>📚 Commuting Vocabulary</h2>
+                                    <table class="vocab-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Phrase</th>
+                                                <th>Meaning</th>
+                                                <th>Example</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Close to</strong></td>
+                                                <td>Near, short distance</td>
+                                                <td>"Jeff lives close to work."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Far from</strong></td>
+                                                <td>Distant, long distance</td>
+                                                <td>"Melanie lives far from work."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Away from</strong></td>
+                                                <td>At a distance from</td>
+                                                <td>"She lives away from the city."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Short commute</strong></td>
+                                                <td>Quick journey to work</td>
+                                                <td>"Jeff has a short commute."</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Long commute</strong></td>
+                                                <td>Extended journey to work</td>
+                                                <td>"Melanie has a long commute."</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide Navigation -->
+                        <button class="slide-btn prev" id="prevBtnCommuting">❮</button>
+                        <button class="slide-btn next" id="nextBtnCommuting">❯</button>
+
+                        <!-- Slide Indicators -->
+                        <div class="slide-indicators" id="indicatorsCommuting"></div>
+                    </div>
+
+                    <!-- Slide Counter -->
+                    <div class="slide-counter">
+                        <span id="currentSlideCommuting">1</span> / <span id="totalSlidesCommuting">5</span>
                     </div>
                 </div>
             </div>

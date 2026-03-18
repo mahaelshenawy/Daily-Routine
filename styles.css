@@ -962,3 +962,147 @@ textarea:focus {
         border: 1px solid var(--border-color);
     }
 }
+
+/* ==================== RECAP GRID ==================== */
+.recap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.recap-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.recap-section h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.recap-section ul {
+    list-style: none;
+}
+
+.recap-section li {
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.recap-section li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* ==================== WORD ORDER GRID ==================== */
+.word-order-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.word-order-box {
+    background: #f0f4ff;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.word-order-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.word-order-box p {
+    margin: 10px 0;
+}
+
+/* ==================== DISTANCE GRID ==================== */
+.distance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.distance-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.distance-box h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.distance-box p {
+    margin: 10px 0;
+}
+
+/* ==================== COMMUTERS GRID ==================== */
+.commuters-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.commuter-card {
+    background: #f0f4ff;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.commuter-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.commuter-card p {
+    margin: 8px 0;
+}
+
+/* ==================== MISTAKE CARD ==================== */
+.mistakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.mistake-card {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+}
+
+.mistake-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.mistake-card p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .word-order-grid,
+    .distance-grid,
+    .commuters-grid {
+        grid-template-columns: 1fr;
+    }
+}

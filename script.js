@@ -446,6 +446,207 @@ function resetAllActivities() {
     });
 }
 
+// ==================== COMMUTING ACTIVITIES ====================
+function checkCommutingBlanks() {
+    const blanks = document.querySelectorAll('.commute-blank');
+    let correct = 0;
+    let feedback = '';
+
+    blanks.forEach((blank, index) => {
+        const userAnswer = blank.value.toLowerCase().trim();
+        const correctAnswer = blank.dataset.answer.toLowerCase();
+
+        if (userAnswer === correctAnswer) {
+            correct++;
+            blank.style.borderBottomColor = '#10b981';
+            feedback += `<div class="feedback-item correct">✓ Question ${index + 1}: Correct!</div>`;
+        } else {
+            blank.style.borderBottomColor = '#ef4444';
+            feedback += `<div class="feedback-item incorrect">✗ Question ${index + 1}: The answer is "${blank.dataset.answer}"</div>`;
+        }
+    });
+
+    const feedbackDiv = document.getElementById('feedback-7');
+    feedbackDiv.innerHTML = feedback;
+    feedbackDiv.classList.add('show');
+
+    if (correct === blanks.length) {
+        feedbackDiv.classList.add('success');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px; font-weight: bold;">🎉 Perfect! You understand commuting vocabulary!</div>`;
+    } else {
+        feedbackDiv.classList.add('info');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px;">You got ${correct}/${blanks.length} correct. Review and try again!</div>`;
+    }
+}
+
+function checkCommutingMultipleChoice() {
+    const questions = document.querySelectorAll('.multiple-choice');
+    let correct = 0;
+    let feedback = '';
+    let questionIndex = 0;
+
+    // Check commuting-specific questions (q-c1 through q-c5)
+    for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector(`input[name="q-c${i}"]:checked`);
+        questionIndex = i;
+
+        if (selected) {
+            if (selected.value === 'correct') {
+                correct++;
+                feedback += `<div class="feedback-item correct">✓ Question ${i}: Correct!</div>`;
+            } else {
+                feedback += `<div class="feedback-item incorrect">✗ Question ${i}: Incorrect. Try again!</div>`;
+            }
+        } else {
+            feedback += `<div class="feedback-item incorrect">✗ Question ${i}: Please select an answer.</div>`;
+        }
+    }
+
+    const feedbackDiv = document.getElementById('feedback-8');
+    feedbackDiv.innerHTML = feedback;
+    feedbackDiv.classList.add('show');
+
+    if (correct === 5) {
+        feedbackDiv.classList.add('success');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px; font-weight: bold;">🎉 Perfect score! You're a commuting expert!</div>`;
+    } else {
+        feedbackDiv.classList.add('info');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px;">You got ${correct}/5 correct. Keep practicing!</div>`;
+    }
+}
+
+function checkCommutingMatching() {
+    const matchTargets = document.querySelectorAll('.match-targets .match-target');
+    let correct = 0;
+    let feedback = '';
+
+    matchTargets.forEach((target, index) => {
+        const correctAnswer = target.dataset.answer;
+        const selectedAnswer = target.dataset.selected;
+
+        if (selectedAnswer === correctAnswer) {
+            correct++;
+            target.classList.add('filled');
+            feedback += `<div class="feedback-item correct">✓ Match ${index + 1}: Correct!</div>`;
+        } else {
+            feedback += `<div class="feedback-item incorrect">✗ Match ${index + 1}: Try again!</div>`;
+        }
+    });
+
+    const feedbackDiv = document.getElementById('feedback-9');
+    feedbackDiv.innerHTML = feedback;
+    feedbackDiv.classList.add('show');
+
+    if (correct === matchTargets.length) {
+        feedbackDiv.classList.add('success');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px; font-weight: bold;">🎉 Perfect! You matched all correctly!</div>`;
+    } else {
+        feedbackDiv.classList.add('info');
+        feedbackDiv.innerHTML += `<div style="margin-top: 10px;">You got ${correct}/${matchTargets.length} correct. Try again!</div>`;
+    }
+}
+
+// ==================== MULTI-SECTION SLIDE NAVIGATION ====================
+let currentSlideLevelUp = 0;
+let currentSlideCommuting = 0;
+
+function initializeSectionSlides() {
+    // Initialize Level Up slides
+    const levelUpSlides = document.querySelectorAll('#levelup .slide');
+    if (levelUpSlides.length > 0) {
+        const levelUpIndicatorsContainer = document.getElementById('indicatorsLevelUp');
+        for (let i = 0; i < levelUpSlides.length; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+            indicator.onclick = () => goToSlideLevelUp(i);
+            levelUpIndicatorsContainer.appendChild(indicator);
+        }
+        document.getElementById('totalSlidesLevelUp').textContent = levelUpSlides.length;
+    }
+
+    // Initialize Commuting slides
+    const commutingSlides = document.querySelectorAll('#commuting .slide');
+    if (commutingSlides.length > 0) {
+        const commutingIndicatorsContainer = document.getElementById('indicatorsCommuting');
+        for (let i = 0; i < commutingSlides.length; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+            indicator.onclick = () => goToSlideCommuting(i);
+            commutingIndicatorsContainer.appendChild(indicator);
+        }
+        document.getElementById('totalSlidesCommuting').textContent = commutingSlides.length;
+    }
+}
+
+function showSlideLevelUp(n) {
+    const slides = document.querySelectorAll('#levelup .slide');
+    slides.forEach(slide => slide.classList.remove('active'));
+    const indicators = document.querySelectorAll('#indicatorsLevelUp .indicator');
+    indicators.forEach(ind => ind.classList.remove('active'));
+
+    slides[n].classList.add('active');
+    indicators[n].classList.add('active');
+    document.getElementById('currentSlideLevelUp').textContent = n + 1;
+}
+
+function goToSlideLevelUp(n) {
+    currentSlideLevelUp = n;
+    showSlideLevelUp(currentSlideLevelUp);
+}
+
+function nextSlideLevelUp() {
+    const slides = document.querySelectorAll('#levelup .slide');
+    currentSlideLevelUp = (currentSlideLevelUp + 1) % slides.length;
+    showSlideLevelUp(currentSlideLevelUp);
+}
+
+function prevSlideLevelUp() {
+    const slides = document.querySelectorAll('#levelup .slide');
+    currentSlideLevelUp = (currentSlideLevelUp - 1 + slides.length) % slides.length;
+    showSlideLevelUp(currentSlideLevelUp);
+}
+
+function showSlideCommuting(n) {
+    const slides = document.querySelectorAll('#commuting .slide');
+    slides.forEach(slide => slide.classList.remove('active'));
+    const indicators = document.querySelectorAll('#indicatorsCommuting .indicator');
+    indicators.forEach(ind => ind.classList.remove('active'));
+
+    slides[n].classList.add('active');
+    indicators[n].classList.add('active');
+    document.getElementById('currentSlideCommuting').textContent = n + 1;
+}
+
+function goToSlideCommuting(n) {
+    currentSlideCommuting = n;
+    showSlideCommuting(currentSlideCommuting);
+}
+
+function nextSlideCommuting() {
+    const slides = document.querySelectorAll('#commuting .slide');
+    currentSlideCommuting = (currentSlideCommuting + 1) % slides.length;
+    showSlideCommuting(currentSlideCommuting);
+}
+
+function prevSlideCommuting() {
+    const slides = document.querySelectorAll('#commuting .slide');
+    currentSlideCommuting = (currentSlideCommuting - 1 + slides.length) % slides.length;
+    showSlideCommuting(currentSlideCommuting);
+}
+
+// Event listeners for Level Up buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const nextBtnLevelUp = document.getElementById('nextBtnLevelUp');
+    const prevBtnLevelUp = document.getElementById('prevBtnLevelUp');
+    const nextBtnCommuting = document.getElementById('nextBtnCommuting');
+    const prevBtnCommuting = document.getElementById('prevBtnCommuting');
+
+    if (nextBtnLevelUp) nextBtnLevelUp.addEventListener('click', nextSlideLevelUp);
+    if (prevBtnLevelUp) prevBtnLevelUp.addEventListener('click', prevSlideLevelUp);
+    if (nextBtnCommuting) nextBtnCommuting.addEventListener('click', nextSlideCommuting);
+    if (prevBtnCommuting) prevBtnCommuting.addEventListener('click', prevSlideCommuting);
+});
+
 // Export for potential future use
 window.dailyRoutineApp = {
     nextSlide,
@@ -457,5 +658,14 @@ window.dailyRoutineApp = {
     checkAdverbs,
     checkSequence,
     checkDescription,
-    resetAllActivities
+    resetAllActivities,
+    checkCommutingBlanks,
+    checkCommutingMultipleChoice,
+    checkCommutingMatching,
+    nextSlideLevelUp,
+    prevSlideLevelUp,
+    goToSlideLevelUp,
+    nextSlideCommuting,
+    prevSlideCommuting,
+    goToSlideCommuting
 };
