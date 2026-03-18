@@ -645,6 +645,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevBtnLevelUp) prevBtnLevelUp.addEventListener('click', prevSlideLevelUp);
     if (nextBtnCommuting) nextBtnCommuting.addEventListener('click', nextSlideCommuting);
     if (prevBtnCommuting) prevBtnCommuting.addEventListener('click', prevSlideCommuting);
+    
+    // Initialize section slides
+    initializeSectionSlides();
 });
 
 // Export for potential future use
@@ -669,3 +672,42 @@ window.dailyRoutineApp = {
     prevSlideCommuting,
     goToSlideCommuting
 };
+
+// ==================== ORIGINAL SLIDES SLIDER ====================
+let currentOriginalSlide = 0;
+
+function showOriginalSlide(n) {
+    const slides = document.querySelectorAll('.original-slide');
+    if (slides.length === 0) return;
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    
+    currentOriginalSlide = (n + slides.length) % slides.length;
+    slides[currentOriginalSlide].classList.add('active');
+    
+    const counter = document.getElementById('currentOriginalSlide');
+    if (counter) counter.textContent = currentOriginalSlide + 1;
+}
+
+function nextOriginalSlide() {
+    showOriginalSlide(currentOriginalSlide + 1);
+}
+
+function prevOriginalSlide() {
+    showOriginalSlide(currentOriginalSlide - 1);
+}
+
+// Initialize original slides slider
+document.addEventListener('DOMContentLoaded', () => {
+    const nextBtn = document.getElementById('nextBtnOriginal');
+    const prevBtn = document.getElementById('prevBtnOriginal');
+    
+    if (nextBtn) nextBtn.addEventListener('click', nextOriginalSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevOriginalSlide);
+    
+    const totalCounter = document.getElementById('totalOriginalSlides');
+    const slides = document.querySelectorAll('.original-slide');
+    if (totalCounter) totalCounter.textContent = slides.length;
+    
+    if (slides.length > 0) showOriginalSlide(0);
+});
